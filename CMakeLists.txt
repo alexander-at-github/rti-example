@@ -6,7 +6,7 @@ project (
 
 find_package (
   librtidevice REQUIRED
-  PATHS "/home/alexander/cdr/rti/build/"
+  PATHS "/home/alexander/iue/cdr/rti-3-tmp/build/"
   )
 
 

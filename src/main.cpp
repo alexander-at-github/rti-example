@@ -9,12 +9,15 @@
 
 int main(int argc, char** argv)
 {
+  auto points = std::vector<std::array<float, 3> > {{0,0,0}, {1,1,0}};
+  auto normals = std::vector<std::array<float, 3> > {{0,0,1}, {0,0,1}};
+  auto spacing = std::vector<float> {std::sqrt(2), std::sqrt(2)};
+
   auto rtidevice = rti::device<float> {};
   auto particlefactory = std::make_unique<particle_factory<float> > ();
-  rtidevice.set_points(input::get_points());
-  rtidevice.set_normals(normals());
-  rtidevice.set_grid_spacing(spacing());
-  //rtidevice.set_sticking_coefficient(0.5);
+  rtidevice.set_points(points);
+  rtidevice.set_normals(normals);
+  rtidevice.set_grid_spacing(spacing);
   rtidevice.set_number_of_rays(1 * 1024 * 1024);
   rtidevice.register_particle_factory(std::move(particlefactory));
   rtidevice.run();
