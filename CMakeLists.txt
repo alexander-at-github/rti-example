@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.11)
 
 project (
-  use-librtidevice
+  use-rtidevice
   VERSION 0.1)
 
 find_package (
-  librtidevice REQUIRED
-  PATHS "/home/alexander/iue/cdr/rti-3-tmp/build/"
+  rtidevice REQUIRED
+  PATHS "/home/alexander/cdr/rti/build/"
   )
 
 
@@ -26,5 +26,5 @@ target_compile_features (
 target_link_libraries (
   run
   PRIVATE
-  librtidevice::librtidevice
+  rtidevice::rtidevice
   )
