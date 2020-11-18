@@ -5,7 +5,7 @@
 
 #include <rti/device.hpp>
 
-#include "particle_factory.hpp"
+#include "particle.hpp"
 
 int main(int argc, char** argv)
 {
@@ -13,13 +13,11 @@ int main(int argc, char** argv)
   auto normals = std::vector<std::array<float, 3> > {{0,0,1}, {0,0,1}};
   auto spacing = std::vector<float> {std::sqrt(2), std::sqrt(2)};
 
-  auto rtidevice = rti::device<float> {};
-  auto particlefactory = std::make_unique<particle_factory<float> > ();
+  auto rtidevice = rti::device<float, particle<float> > {};
   rtidevice.set_points(points);
   rtidevice.set_normals(normals);
   rtidevice.set_grid_spacing(spacing);
-  rtidevice.set_number_of_rays(1 * 1024 * 1024);
-  rtidevice.register_particle_factory(std::move(particlefactory));
+  rtidevice.set_number_of_rays(2 * 1024 * 1024);
   rtidevice.run();
   auto mcestimates = rtidevice.get_mc_estimates();
 
