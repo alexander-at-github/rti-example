@@ -13,7 +13,8 @@ int main(int argc, char** argv)
   auto normals = std::vector<std::array<float, 3> > {{0,0,1}, {0,0,1}};
   auto spacing = std::vector<float> {std::sqrt(2), std::sqrt(2)};
 
-  auto rtidevice = rti::device<float, particle<float> > {};
+  using diffuse = rti::reflection::diffuse<float>;
+  auto rtidevice = rti::device<float, particle<float>, diffuse> {};
   rtidevice.set_points(points);
   rtidevice.set_normals(normals);
   rtidevice.set_grid_spacing(spacing);
